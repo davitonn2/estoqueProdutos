@@ -111,9 +111,6 @@ Nesta interface, você poderá:
 *   Ver os detalhes de cada endpoint (método HTTP, parâmetros, estrutura de requisição/resposta).
 *   Testar os endpoints diretamente clicando em "Try it out" e "Execute".
 
-## ✉️ Funcionalidade de E-mail
-Falta implementar...
-## 📧 Contato
+## ✉️ Alterações Futuras
+*   Funcionalidade de E-mail
 
-[Seu Nome/Nome da Equipe] - [Seu Email ou Link para Perfil do GitHub]
-Link do Projeto: [https://github.com/[SeuUsuario]/[NomeDoSeuRepositorio]](https://github.com/[SeuUsuario]/[NomeDoSeuRepositorio])
