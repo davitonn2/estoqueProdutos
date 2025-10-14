@@ -99,9 +99,6 @@ public class RelatorioService {
 
     @Transactional(readOnly = true)
     public List<Map<String, Object>> gerarAnaliseTendenciasEstoque() {
-        // Para uma análise de tendência real, precisaríamos de um histórico de movimentações.
-        // Como não temos uma entidade de MovimentacaoEstoque, vamos simular com informações atuais
-        // e sugerir a implementação futura.
 
         log.warn("ATENÇÃO: A análise de tendências de estoque é uma simulação. Para dados reais, implemente uma entidade de MovimentacaoEstoque.");
 
@@ -114,10 +111,6 @@ public class RelatorioService {
             tendencia.put("quantidadeAtual", produto.getQuantidadeEstoque());
             tendencia.put("dataUltimaAtualizacao", produto.getDataUltimaAtualizacao());
 
-            // Lógica simplificada de "tendência":
-            // - Se o estoque for baixo (abaixo do LIMITE_ESTOQUE_BAIXO), a tendência é "Alerta: Baixo Estoque"
-            // - Se o estoque estiver aumentando (simulado por ter sido atualizado recentemente e ser alto), "Estável/Aumentando"
-            // - Se o estoque for médio, "Estável"
             if (produto.getQuantidadeEstoque() < 5) {
                 tendencia.put("tendencia", "Alerta: Baixo Estoque. Reabastecer!");
             } else if (produto.getQuantidadeEstoque() > 50 && produto.getDataUltimaAtualizacao().isAfter(LocalDateTime.now().minusDays(7))) {
@@ -125,12 +118,6 @@ public class RelatorioService {
             } else {
                 tendencia.put("tendencia", "Estável");
             }
-
-            // Idealmente, aqui você buscaria histórico de vendas/entradas/saídas para calcular
-            // média de consumo diário, dias de estoque restantes, etc.
-            // Exemplo de como poderia ser:
-            // tendencia.put("mediaConsumoMensal", calcularMediaConsumo(produto.getId(), 30));
-            // tendencia.put("diasDeEstoqueRestantes", calcularDiasDeEstoqueRestantes(produto.getId()));
 
             return tendencia;
         }).collect(Collectors.toList());
